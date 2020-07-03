@@ -1,5 +1,4 @@
 import 'package:news_api/ui/shared/home_container.dart';
-
 import 'package:flutter/material.dart';
 import 'package:news_api/constant/route_names.dart';
 import 'package:news_api/ui/views/login_view.dart';
@@ -25,11 +24,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: WelcomeView(),
       );
-    // case HomeContainerRoute:
-    //   return _getPageRoute(
-    //     routeName: settings.name,
-    //     viewToShow: HomeContainer(),
-    //   );
+    case HomeContainerRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: HomeContainer(),
+      );
     case SignupViewRoute:
       return _getPageRoute(
         routeName: settings.name,

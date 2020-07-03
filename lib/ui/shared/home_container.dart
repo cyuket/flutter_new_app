@@ -1,5 +1,8 @@
 // import 'package:news_api/ui/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:news_api/constant/app_assets.dart';
+import 'package:news_api/ui/shared/screen_util.dart';
+import 'package:news_api/ui/views/blog_list_view.dart';
 
 import 'package:news_api/ui/widgets/navbar_widget.dart';
 
@@ -24,13 +27,7 @@ class _HomeContainerState extends State<HomeContainer> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
-      // HomeView(),
-      // OrderView(),
-      // AccountView()
-      Text(
-        'Index 2: careers',
-        style: _textStyle,
-      ),
+      BlogList(),
       Text(
         'Index 2: careers',
         style: _textStyle,
@@ -45,6 +42,7 @@ class _HomeContainerState extends State<HomeContainer> {
       ),
     ];
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
         child: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       ),
@@ -56,9 +54,9 @@ class _HomeContainerState extends State<HomeContainer> {
         onTabSelected: _onItemTapped,
         items: [
           FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
-          FABBottomAppBarItem(iconData: Icons.list, text: 'careers'),
-          FABBottomAppBarItem(iconData: Icons.person, text: 'applications'),
-          FABBottomAppBarItem(iconData: Icons.person, text: 'profile'),
+          FABBottomAppBarItem(iconData: Icons.favorite, text: 'Likes'),
+          FABBottomAppBarItem(iconData: Icons.person, text: 'Profile'),
+          FABBottomAppBarItem(iconData: Icons.lock, text: 'Setting'),
         ],
       ),
 

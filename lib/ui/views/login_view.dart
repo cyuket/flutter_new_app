@@ -48,7 +48,8 @@ class LoginView extends StatelessWidget {
               verticalSpace(20),
               BusyButton(
                 title: "Sign in",
-                onPressed: null,
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, HomeContainerRoute),
                 color: AppColors.yellow,
               ),
               verticalSpace(30),
