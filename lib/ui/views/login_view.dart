@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_api/constant/route_names.dart';
 import 'package:news_api/ui/shared/app_colors.dart';
 import 'package:news_api/ui/shared/shared_styles.dart';
 import 'package:news_api/ui/shared/ui_helpers.dart';
@@ -52,6 +53,7 @@ class LoginView extends StatelessWidget {
               ),
               verticalSpace(30),
               InkWell(
+                onTap: () => Navigator.pushNamed(context, SignupViewRoute),
                 child: Row(
                   children: [
                     Text(
