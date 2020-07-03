@@ -8,12 +8,15 @@ class BusyButton extends StatefulWidget {
   final String title;
   final Function onPressed;
   final bool enabled, outline;
-  const BusyButton(
-      {@required this.title,
-      this.busy = false,
-      @required this.onPressed,
-      this.enabled = true,
-      this.outline = false});
+  final Color color;
+  const BusyButton({
+    @required this.title,
+    this.busy = false,
+    @required this.onPressed,
+    this.enabled = true,
+    this.outline = false,
+    @required this.color,
+  });
 
   @override
   _BusyButtonState createState() => _BusyButtonState();
@@ -35,9 +38,7 @@ class _BusyButtonState extends State<BusyButton> {
               vertical: widget.busy ? 10 : 10),
           decoration: BoxDecoration(
               color: !widget.outline
-                  ? widget.busy
-                      ? AppColors.primaryColor
-                      : AppColors.primaryColor
+                  ? widget.busy ? widget.color : widget.color
                   : Colors.white,
               borderRadius: BorderRadius.circular(5),
               border: Border.all(color: AppColors.primaryColor)),

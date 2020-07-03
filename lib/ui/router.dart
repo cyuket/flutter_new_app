@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:news_api/constant/route_names.dart';
 import 'package:news_api/ui/views/onbording.dart';
 import 'package:news_api/ui/views/splash_view.dart';
+import 'package:news_api/ui/views/welcome_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -16,6 +17,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: OnboardingView(),
+      );
+    case WelcomeViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: WelcomeView(),
       );
     // case HomeContainerRoute:
     //   return _getPageRoute(

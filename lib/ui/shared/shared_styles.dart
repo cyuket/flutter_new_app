@@ -31,13 +31,13 @@ const EdgeInsets largeFieldPadding =
     const EdgeInsets.symmetric(horizontal: 15, vertical: 15);
 
 // Text Variables
-final TextStyle buttonTitleTextStyle = GoogleFonts.poppins(
+final TextStyle buttonTitleTextStyle = GoogleFonts.montserrat(
     textStyle: TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 20,
   color: Colors.white,
 ));
-final TextStyle buttonTitleTextStyleBlack = GoogleFonts.poppins(
+final TextStyle buttonTitleTextStyleBlack = GoogleFonts.montserrat(
     textStyle: TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 20,

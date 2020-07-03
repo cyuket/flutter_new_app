@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_api/constant/app_assets.dart';
+import 'package:news_api/constant/route_names.dart';
 import 'package:news_api/ui/shared/app_colors.dart';
 
 import 'package:news_api/ui/shared/ui_helpers.dart';
@@ -42,6 +43,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: Stack(
         children: <Widget>[
           PageView(
@@ -92,7 +94,10 @@ class _OnboardingViewState extends State<OnboardingView> {
                   ),
                   InkWell(
                     onTap: () {
-                      if (currentIndex == 1) {}
+                      if (currentIndex == 1) {
+                        Navigator.pushReplacementNamed(
+                            context, WelcomeViewRoute);
+                      }
                       nextFunction();
                     },
                     child: Material(

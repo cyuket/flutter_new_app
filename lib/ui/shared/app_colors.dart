@@ -9,4 +9,5 @@ class AppColors {
   static Color contraBlue = Color(0xff1947E6);
   static Color onboardingRed = Color(0xffF95A2C);
   static Color yellow = Color(0xffFFBD12);
+  static Color background = Color(0xffE5E5E5);
 }
