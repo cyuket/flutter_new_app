@@ -3,7 +3,7 @@ import 'package:news_api/constant/app_assets.dart';
 import 'package:news_api/ui/shared/app_colors.dart';
 import 'package:news_api/ui/shared/shared_styles.dart';
 import 'package:news_api/ui/shared/ui_helpers.dart';
-import 'package:news_api/ui/views/blog_list_view.dart';
+
 import 'package:news_api/ui/views/news_detail_view.dart';
 import 'package:news_api/ui/widgets/news_card.dart';
 

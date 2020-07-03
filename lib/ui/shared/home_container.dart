@@ -4,6 +4,7 @@ import 'package:news_api/constant/app_assets.dart';
 import 'package:news_api/ui/shared/screen_util.dart';
 import 'package:news_api/ui/views/blog_list_view.dart';
 import 'package:news_api/ui/views/favourite_view.dart';
+import 'package:news_api/ui/views/profile_view.dart';
 
 import 'package:news_api/ui/widgets/navbar_widget.dart';
 
@@ -30,10 +31,7 @@ class _HomeContainerState extends State<HomeContainer> {
     List<Widget> _widgetOptions = <Widget>[
       BlogList(),
       FavouriteView(),
-      Text(
-        'Index 3: Appliications',
-        style: _textStyle,
-      ),
+      ProfileView(),
       Text(
         'Index 4: Profile',
         style: _textStyle,
