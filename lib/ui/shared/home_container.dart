@@ -5,6 +5,7 @@ import 'package:news_api/ui/shared/screen_util.dart';
 import 'package:news_api/ui/views/blog_list_view.dart';
 import 'package:news_api/ui/views/favourite_view.dart';
 import 'package:news_api/ui/views/profile_view.dart';
+import 'package:news_api/ui/views/setting_view.dart';
 
 import 'package:news_api/ui/widgets/navbar_widget.dart';
 
@@ -32,10 +33,7 @@ class _HomeContainerState extends State<HomeContainer> {
       BlogList(),
       FavouriteView(),
       ProfileView(),
-      Text(
-        'Index 4: Profile',
-        style: _textStyle,
-      ),
+      SettingView()
     ];
     return Scaffold(
       backgroundColor: Colors.white,
