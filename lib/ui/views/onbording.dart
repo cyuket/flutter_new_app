@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:news_api/constant/app_assets.dart';
 import 'package:news_api/ui/shared/app_colors.dart';
 
+import 'package:news_api/ui/shared/ui_helpers.dart';
+import 'package:news_api/ui/widgets/onboarding_page.dart';
+
 class OnboardingView extends StatefulWidget {
   @override
   _OnboardingViewState createState() => _OnboardingViewState();
@@ -16,10 +19,6 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   nextFunction() {
     _pageController.nextPage(duration: _kDuration, curve: _kCurve);
-  }
-
-  previousFunction() {
-    _pageController.previousPage(duration: _kDuration, curve: _kCurve);
   }
 
   onChangedFunction(int index) {
@@ -49,101 +48,77 @@ class _OnboardingViewState extends State<OnboardingView> {
             controller: _pageController,
             onPageChanged: onChangedFunction,
             children: <Widget>[
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          width: 309,
-                          height: 309,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(309),
-                              color: AppColors.onboardingRed),
-                        ),
-                        Image.asset(AppAssets.onboarding1)
-                      ],
-                    )
-                  ],
-                ),
+              OnboardingPage(
+                image: AppAssets.onboarding1,
+                backgroundColor: AppColors.onboardingRed,
+                heading: "News everywhere",
+                subHeading:
+                    "It’s important that we have news everywhere. It’s critical to know its authenticity",
               ),
-              Container(child: Center(child: Text("Second Screen"))),
-              Container(child: Center(child: Text("Third Screen")))
+              OnboardingPage(
+                image: AppAssets.onboarding2,
+                backgroundColor: Color(0xff00C6AE),
+                heading: "It’s fresh and thrilling",
+                subHeading:
+                    "It’s very important to know that the news you consume is fresh and authentic",
+              ),
             ],
           ),
           Positioned(
-            bottom: 60,
-            left: 150,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Indicator(
-                  positionIndex: 0,
-                  currentIndex: currentIndex,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Indicator(
-                  positionIndex: 1,
-                  currentIndex: currentIndex,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Indicator(
-                  positionIndex: 2,
-                  currentIndex: currentIndex,
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 30,
-            left: 130,
-            child: Padding(
+            bottom: 10,
+            child: Container(
+              width: screenWidth(context),
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    InkWell(
-                        onTap: () => previousFunction(),
-                        child: Text("Previous")),
-                    SizedBox(
-                      width: 50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Indicator(
+                        positionIndex: 0,
+                        currentIndex: currentIndex,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Indicator(
+                        positionIndex: 1,
+                        currentIndex: currentIndex,
+                      ),
+                    ],
+                  ),
+                  InkWell(
+                    onTap: () {
+                      if (currentIndex == 1) {}
+                      nextFunction();
+                    },
+                    child: Material(
+                      elevation: 10,
+                      shadowColor: Colors.black,
+                      color: AppColors.yellow,
+                      borderRadius: BorderRadius.circular(100),
+                      child: Container(
+                        height: 60,
+                        width: 60,
+                        child: Center(
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: AppColors.textColor,
+                            size: 30,
+                          ),
+                        ),
+                      ),
                     ),
-                    InkWell(onTap: () => nextFunction(), child: Text("Next"))
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
-          )
+          ),
         ],
       ),
-    );
-  }
-}
-
-class Indicator extends StatelessWidget {
-  final int positionIndex, currentIndex;
-  const Indicator({this.currentIndex, this.positionIndex});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 12,
-      width: 12,
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
-          color:
-              positionIndex == currentIndex ? Colors.blue : Colors.transparent,
-          borderRadius: BorderRadius.circular(100)),
     );
   }
 }
