@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_api/constant/app_assets.dart';
+import 'package:news_api/constant/route_names.dart';
 import 'package:news_api/ui/shared/app_colors.dart';
 import 'package:news_api/ui/shared/shared_styles.dart';
 import 'package:news_api/ui/shared/ui_helpers.dart';
@@ -55,7 +56,8 @@ class WelcomeView extends StatelessWidget {
               ),
               verticalSpace(20),
               InkWell(
-                onTap: () => null,
+                onTap: () =>
+                    Navigator.pushReplacementNamed(context, LoginViewRoute),
                 child: Container(
                   height: 60,
                   decoration: BoxDecoration(

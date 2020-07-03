@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 // Box Decorations
 
 BoxDecoration fieldDecortaion = BoxDecoration(
-    borderRadius: BorderRadius.circular(5),
+    borderRadius: BorderRadius.circular(16),
     color: Colors.white,
-    border: Border.all(color: AppColors.borderColor, width: 1));
+    border: Border.all(color: AppColors.textColor, width: 2));
 
 BoxDecoration disabledFieldDecortaion = BoxDecoration(
-    borderRadius: BorderRadius.circular(5),
+    borderRadius: BorderRadius.circular(16),
     color: Colors.transparent,
-    border: Border.all(color: AppColors.primaryColor, width: 1));
+    border: Border.all(color: AppColors.textColor, width: 2));
 
 BoxDecoration buttonDecoration = BoxDecoration(
     border: Border.all(
@@ -33,15 +33,15 @@ const EdgeInsets largeFieldPadding =
 // Text Variables
 final TextStyle buttonTitleTextStyle = GoogleFonts.montserrat(
     textStyle: TextStyle(
-  fontWeight: FontWeight.w500,
-  fontSize: 20,
-  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 21,
+  color: AppColors.textColor,
 ));
 final TextStyle buttonTitleTextStyleBlack = GoogleFonts.montserrat(
     textStyle: TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 20,
-  color: Colors.white,
+  color: AppColors.textColor,
 ));
 
 final TextStyle textStyle = GoogleFonts.montserrat(

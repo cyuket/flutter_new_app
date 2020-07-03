@@ -68,6 +68,34 @@ class _InputFieldState extends State<InputField> {
               widget.isReadOnly ? disabledFieldDecortaion : fieldDecortaion,
           child: Row(
             children: <Widget>[
+              GestureDetector(
+                onTap: widget.password
+                    ? () => setState(() {
+                          isPassword = !isPassword;
+                        })
+                    : null,
+                child: widget.password
+                    ? Container(
+                        width: 24,
+                        height: 24,
+                        alignment: Alignment.center,
+                        child: Icon(
+                          isPassword ? Icons.visibility : Icons.visibility_off,
+                          color: AppColors.textColor,
+                        ),
+                      )
+                    : Container(
+                        width: 24,
+                        height: 24,
+                        alignment: Alignment.center,
+                        child: widget != null
+                            ? Icon(
+                                widget.icon,
+                                color: AppColors.textColor,
+                              )
+                            : null,
+                      ),
+              ),
               Expanded(
                 child: TextFormField(
                   controller: widget.controller,
@@ -75,10 +103,10 @@ class _InputFieldState extends State<InputField> {
                   focusNode: widget.fieldFocusNode,
                   textInputAction: widget.textInputAction,
                   onChanged: widget.onChanged,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.montserrat(
                     textStyle: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 15,
+                      fontSize: 21,
                       color: AppColors.textColor,
                     ),
                   ),
@@ -97,7 +125,9 @@ class _InputFieldState extends State<InputField> {
                   },
                   obscureText: isPassword,
                   readOnly: widget.isReadOnly,
-                  decoration: InputDecoration.collapsed(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
                     hintText: widget.placeholder,
                     hintStyle: GoogleFonts.poppins(
                       textStyle: TextStyle(
@@ -108,34 +138,6 @@ class _InputFieldState extends State<InputField> {
                     ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: widget.password
-                    ? () => setState(() {
-                          isPassword = !isPassword;
-                        })
-                    : null,
-                child: widget.password
-                    ? Container(
-                        width: fieldHeight,
-                        height: fieldHeight,
-                        alignment: Alignment.center,
-                        child: Icon(
-                          isPassword ? Icons.visibility : Icons.visibility_off,
-                          color: AppColors.borderColor,
-                        ),
-                      )
-                    : Container(
-                        width: fieldHeight,
-                        height: fieldHeight,
-                        alignment: Alignment.center,
-                        child: widget != null
-                            ? Icon(
-                                widget.icon,
-                                color: AppColors.borderColor,
-                              )
-                            : null,
-                      ),
               ),
             ],
           ),
