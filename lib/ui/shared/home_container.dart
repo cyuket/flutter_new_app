@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_api/constant/app_assets.dart';
 import 'package:news_api/ui/shared/screen_util.dart';
 import 'package:news_api/ui/views/blog_list_view.dart';
+import 'package:news_api/ui/views/favourite_view.dart';
 
 import 'package:news_api/ui/widgets/navbar_widget.dart';
 
@@ -28,10 +29,7 @@ class _HomeContainerState extends State<HomeContainer> {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
       BlogList(),
-      Text(
-        'Index 2: careers',
-        style: _textStyle,
-      ),
+      FavouriteView(),
       Text(
         'Index 3: Appliications',
         style: _textStyle,
@@ -48,8 +46,9 @@ class _HomeContainerState extends State<HomeContainer> {
       ),
       bottomNavigationBar: FABBottomAppBar(
         //centerItemText: 'A',
-        color: Color(0xff371821),
-        selectedColor: AppColors.primaryColor, //Color(0xff800000),
+        color: AppColors.textColor,
+        selectedColor: AppColors.contraBlue,
+        //Color(0xff800000),
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _onItemTapped,
         items: [
