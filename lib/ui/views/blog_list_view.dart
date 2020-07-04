@@ -1,12 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:news_api/constant/app_assets.dart';
-import 'package:news_api/ui/shared/app_colors.dart';
-import 'package:news_api/ui/shared/shared_styles.dart';
+import 'package:news_api/model/article_model.dart';
 import 'package:news_api/ui/shared/ui_helpers.dart';
 import 'package:news_api/ui/views/news_detail_view.dart';
 import 'package:news_api/ui/widgets/news_card.dart';
+import 'package:news_api/utills/news_api.dart';
 
-class BlogList extends StatelessWidget {
+class BlogList extends StatefulWidget {
+  @override
+  _BlogListState createState() => _BlogListState();
+}
+
+class _BlogListState extends State<BlogList> {
+  List<ArticleModel> articleList;
+  bool loading = false;
+  bool error = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchNews();
+  }
+
+  void fetchNews() async {
+    try {
+      setState(() {
+        loading = true;
+      });
+      fetchArticle().then((value) {
+        setState(() {
+          loading = false;
+          articleList = ArticleList.fromData(value["articles"]).articleList;
+          print(articleList[1].title);
+        });
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,18 +56,29 @@ class BlogList extends StatelessWidget {
               ),
               verticalSpace(20),
               Expanded(
-                child: ListView(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        showBottomSheet(
-                            context: context,
-                            builder: (context) => NewsDetail());
-                      },
-                      child: NewsCard(),
-                    ),
-                  ],
-                ),
+                child: loading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              new AlwaysStoppedAnimation<Color>(Colors.blue),
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: articleList.length,
+                        itemBuilder: (context, index) => InkWell(
+                          onTap: () {
+                            showBottomSheet(
+                                context: context,
+                                builder: (context) => NewsDetail(
+                                      article: articleList[index],
+                                    ));
+                          },
+                          child: NewsCard(
+                            article: articleList[index],
+                          ),
+                        ),
+                      ),
               ),
             ],
           ),
