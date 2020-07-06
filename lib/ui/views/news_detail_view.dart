@@ -25,6 +25,10 @@ class _NewsDetailState extends State<NewsDetail> {
         .format(DateTime.parse(widget.article.publisedAt));
     return ViewModelProvider<FavViewModel>.withConsumer(
         viewModelBuilder: () => FavViewModel(),
+        onModelReady: (model) {
+          model.checkFav(widget.article);
+          fav = model.available;
+        },
         builder: (context, data, child) {
           return SafeArea(
             child: Container(

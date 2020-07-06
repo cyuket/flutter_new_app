@@ -60,9 +60,9 @@ class _SettingViewState extends State<SettingView> {
                     Switch(
                       activeColor: AppColors.yellow,
                       value: value,
-                      onChanged: (value) {
+                      onChanged: (current) {
                         setState(() {
-                          value = value;
+                          value = current;
                         });
                       },
                     )
@@ -101,10 +101,10 @@ class _SettingViewState extends State<SettingView> {
                     verticalSpaceSmall,
                     Switch(
                       activeColor: AppColors.yellow,
-                      value: value,
-                      onChanged: (value) {
+                      value: !value,
+                      onChanged: (current) {
                         setState(() {
-                          value = value;
+                          value = !current;
                         });
                       },
                     )

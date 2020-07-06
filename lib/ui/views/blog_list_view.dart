@@ -32,7 +32,6 @@ class _BlogListState extends State<BlogList> {
         setState(() {
           loading = false;
           articleList = ArticleList.fromData(value["articles"]).articleList;
-          print(articleList[1].title);
         });
       });
     } catch (e) {
