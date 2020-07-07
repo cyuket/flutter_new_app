@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: HomeContainerRoute,
+      initialRoute: SplashViewRoute,
       onGenerateRoute: generateRoute,
     );
   }

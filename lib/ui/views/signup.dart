@@ -1,17 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth0/flutter_auth0.dart';
+import 'package:news_api/constant/route_names.dart';
 import 'package:news_api/ui/shared/app_colors.dart';
 import 'package:news_api/ui/shared/shared_styles.dart';
 import 'package:news_api/ui/shared/ui_helpers.dart';
 import 'package:news_api/ui/widgets/busy_button.dart';
 import 'package:news_api/ui/widgets/input_field.dart';
 
-class SignupView extends StatelessWidget {
+class SignupView extends StatefulWidget {
+  @override
+  _SignupViewState createState() => _SignupViewState();
+}
+
+class _SignupViewState extends State<SignupView> {
+  static final String clientId = '6wHsffvYN3uy2vECisRv4jKJcjQhk131';
+  static final String domain = "cyuket.auth0.com";
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool busy = false;
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
+
   final nameController = TextEditingController();
+
+  Auth0 auth = Auth0(baseUrl: 'https://$domain/', clientId: clientId);
+  void _showSnap(String message) {
+    _scaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        content: new Text(message),
+      ),
+    );
+  }
+
+  _signIn() async {
+    try {
+      setState(() {
+        busy = true;
+      });
+
+      print(emailController.text);
+      await auth.auth.createUser({
+        'email': emailController.text,
+        'password': passwordController.text,
+        'connection': 'Username-Password-Authentication'
+      });
+      var message = 'Signup successfull';
+      _showSnap(message);
+
+      Navigator.pushReplacementNamed(context, HomeContainerRoute);
+
+      setState(() {
+        busy = false;
+      });
+    } catch (e) {
+      print(e);
+
+      setState(() {
+        busy = false;
+      });
+      _showSnap("$e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
@@ -56,7 +110,7 @@ class SignupView extends StatelessWidget {
                     ),
                     verticalSpace(20),
                     InputField(
-                      controller: emailController,
+                      controller: nameController,
                       placeholder: "Full Name",
                       icon: Icons.person,
                     ),
@@ -74,8 +128,11 @@ class SignupView extends StatelessWidget {
                     ),
                     verticalSpace(20),
                     BusyButton(
+                      busy: busy,
                       title: "Sign in",
-                      onPressed: null,
+                      onPressed: () async {
+                        await _signIn();
+                      },
                       color: AppColors.yellow,
                     ),
                     verticalSpace(30),
