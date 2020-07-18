@@ -24,7 +24,10 @@ class FavouriteView extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(bottom: 10, top: 10),
                       height: 50,
-                      child: Image.asset(AppAssets.logo),
+                      child: SizedBox(
+                          width: 86,
+                          height: 23.87,
+                          child: Image.asset(AppAssets.logo)),
                     ),
                     verticalSpace(20),
                     Column(

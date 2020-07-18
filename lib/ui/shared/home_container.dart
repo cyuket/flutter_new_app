@@ -1,7 +1,5 @@
 // import 'package:news_api/ui/views/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:news_api/constant/app_assets.dart';
-import 'package:news_api/ui/shared/screen_util.dart';
 import 'package:news_api/ui/views/blog_list_view.dart';
 import 'package:news_api/ui/views/favourite_view.dart';
 import 'package:news_api/ui/views/profile_view.dart';
@@ -18,8 +16,6 @@ class HomeContainer extends StatefulWidget {
 
 class _HomeContainerState extends State<HomeContainer> {
   int _selectedIndex = 0;
-  static const TextStyle _textStyle =
-      TextStyle(fontWeight: FontWeight.bold, color: Color(0xffB0B1B8));
 
   void _onItemTapped(int index) {
     setState(() {

@@ -30,7 +30,11 @@ class OnboardingPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: Image.asset(image),
+                child: SizedBox(
+                  height: 347,
+                  width: 263,
+                  child: Image.asset(image),
+                ),
               ),
             ],
           ),
