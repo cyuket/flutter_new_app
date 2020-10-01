@@ -71,6 +71,8 @@ class NewsCard extends StatelessWidget {
               width: 300,
               child: Text(
                 "${article.title}",
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
                 style: textStyle.copyWith(
                   color: AppColors.textColor,
                   fontWeight: FontWeight.bold,
